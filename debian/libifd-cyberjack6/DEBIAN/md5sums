@@ -1,0 +1,13 @@
+6a52e6d9f329f4804cdd77223c5ddd82  lib/udev/rules.d/60-libifd-cyberjack6.rules
+2c15d7e018ebc9ca684c66dfb63d4542  usr/lib/pcsc/drivers/libifd-cyberjack.bundle/Contents/Info.plist
+06128e6f9846574329d503cc1ac8d035  usr/lib/pcsc/drivers/libifd-cyberjack.bundle/Contents/Linux/libifd-cyberjack.a
+5761a5569f78fbcafca1577b2f19cd5a  usr/lib/pcsc/drivers/libifd-cyberjack.bundle/Contents/Linux/libifd-cyberjack.la
+1b000087ba40e8333a403ea48db50069  usr/lib/pcsc/drivers/libifd-cyberjack.bundle/Contents/Linux/libifd-cyberjack.so.6.0.0
+6175d67b7d65aecb2adff66a0f2b1fe7  usr/lib/pcsc/drivers/libifd-cyberjack.bundle/Contents/PkgInfo
+ea2be003d9fa536fbf40e87af62da811  usr/share/doc/libifd-cyberjack6/LIESMICH.txt.gz
+7a8e5f25b020de76ea735583666d1ecb  usr/share/doc/libifd-cyberjack6/README.txt.gz
+a8db0c93ebe38ba2dc61274c064e6264  usr/share/doc/libifd-cyberjack6/changelog.Debian.gz
+48260776ef2960806e6f24cc54cff3e7  usr/share/doc/libifd-cyberjack6/changelog.gz
+69b5890a01de5023659b0e9cb70b8db7  usr/share/doc/libifd-cyberjack6/copyright
+a88ef235f388ba93aa4bbd17ad5bb364  usr/share/doc/libifd-cyberjack6/examples/cyberjack.conf.default
+35595daf15b281e28def1cebcd52e994  usr/share/man/man8/cyberjack.8.gz

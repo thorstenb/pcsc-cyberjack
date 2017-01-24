@@ -1,0 +1,147 @@
+pcsc-cyberjack (3.99.5final.sp10) unstable; urgency=low
+  * Add support for SHUReader and SISReader
+  * Update to the Reiner-SCT repository rev cyberJack@1305
+
+ -- Frank Neuber <sct@kernelport.com>  Thu, 04 Aug 2016 13:56:52 +0200
+
+pcsc-cyberjack (3.99.5final.sp09) unstable; urgency=low
+  * Fix USB unplug problems
+
+ -- Frank Neuber <sct@kernelport.com>  Tue, 09 Feb 2016 09:11:35 +0000
+  
+pcsc-cyberjack (3.99.5final.sp08) unstable; urgency=low
+  * update COPYRIGHT.GPL, COPYRIGHT.LGPL and FSF address
+
+ -- Frank Neuber <sct@kernelport.com>  Fri, 24 Jul 2015 10:46:27 +0200
+  
+pcsc-cyberjack (3.99.5final.sp07) unstable; urgency=low
+  * Add support for cyberJack secoder TLS, CSYOReader and CBDRReader
+  * Update to the Reiner-SCT repository rev cyberJack@1292
+  
+ -- Frank Neuber <sct@kernelport.com>  Tue, 10 Feb 2015 16:06:17 +0100
+
+pcsc-cyberjack (3.99.5final.sp06) unstable; urgency=low
+  * Add support for CyberJack cv and SoliSYSTEMS
+  * Update to the Reiner-SCT repository rev cyberJack@1275
+  
+ -- Frank Neuber <sct@kernelport.com>  Fri, 20 Jun 2014 17:45:02 +0200
+
+pcsc-cyberjack (3.99.5final.sp05) unstable; urgency=low
+  * Add support for CyberJack wav
+  * Update to the Reiner-SCT repository rev cyberJack@1259
+  
+ -- Frank Neuber <sct@kernelport.com>  Mon, 02 Sep 2013 22:13:40 +0200
+
+pcsc-cyberjack (3.99.5final.sp04) unstable; urgency=low
+  * Add support for CyberJack Go
+  * Update to the Reiner-SCT repository
+  
+ -- Frank Neuber <sct@kernelport.com>  Thu, 22 Nov 2012 14:50:33 +0100
+
+pcsc-cyberjack (3.99.5final.SP02-1) unstable; urgency=low
+
+  * Upload to unstable (Closes: #637742)
+  * Add myself to Uploaders
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sun, 07 Aug 2011 21:03:23 +0200
+
+pcsc-cyberjack (3.99.5final.SP02) stable; urgency=low
+  * released 3.99.5final.SP02
+  * PinVerify/Modify-Problem Responsecode 0x6b80 fixed
+
+ -- Frank Neuber <sct@kernelport.com>  Tue, 14 Jun 2011 09:53:20 +0200
+
+pcsc-cyberjack (3.99.5final.SP01) stable; urgency=low
+  * released 3.99.5final.SP01
+  * new version numbering 3.99.5final.SPXX 
+  * return the PackageVersion 3.99.5 over APDU: FF 9A 01 07 00
+  * fix pin change/modify problem on pinpad
+  * remove the cyberjack group dependency
+
+ -- Frank Neuber <sct@kernelport.com>  Wed, 01 Jun 2011 17:36:03 +0200
+
+pcsc-cyberjack (3.99.5final) stable; urgency=low
+  * released 3.99.5final
+  * make sure that tue pcscd is restarted after installation on suse and on ubuntu
+
+ -- Frank Neuber <sct@kernelport.com>  Thu, 12 May 2011 13:27:28 +0200
+
+pcsc-cyberjack (3.99.5stable) stable; urgency=low
+  * released 3.99.5stable
+  * code merge with main driver sources at Reiner SCT from Mon, 9 May 2011 15:02:38 +0200
+
+ -- Frank Neuber <sct@kernelport.com>  Wed, 11 May 2011 15:21:34 +0200
+
+pcsc-cyberjack (3.99.6rc5) stable; urgency=low
+  * released 3.99.6rc5
+  * fix usb init context problem on osx 10.6 64 bit
+  * add support building universal binarys on osx
+
+ -- Frank Neuber <sct@kernelport.com>  Wed, 13 Apr 2011 11:48:25 +0200
+
+pcsc-cyberjack (3.99.6rc4) stable; urgency=low
+  * released 3.99.6rc4
+  * add support for newer pcscd which pass the interface number in the usb descriptor
+  * add support for libudev which is used in pcscd 1.7.0
+
+ -- Frank Neuber <sct@kernelport.com>  Tue, 05 Apr 2011 14:28:42 +0200
+
+pcsc-cyberjack (3.99.6rc3) stable; urgency=low
+  * released 3.99.6rc3
+  * chance driver version to 3.99 APDU ff9a010700
+  * add reader name APDU ff9a010300
+  * fix buffer length (tested with GET CHALLENGE command APDU 00840000ff)
+
+ -- Frank Neuber <sct@kernelport.com>  Mon, 04 Apr 2011 12:16:17 +0200
+
+pcsc-cyberjack (3.99.6rc2) stable; urgency=low
+  * released 3.99.6rc2
+  * merge 3.99.6beta into 3.99.5rc2
+  * add support for FEATURE_EXECUTE_PACE only for readers with
+    RSCT_READER_HARDWARE_MASK_PACE flag
+
+ -- Frank Neuber <sct@kernelport.com>  Thu, 24 Mar 2011 11:43:53 +0100
+
+pcsc-cyberjack (3.99.5rc1) stable; urgency=low
+  * released 3.99.5rc1
+  * add support for FEATURE_EXECUTE_PACE
+
+ -- Frank Neuber <sct@kernelport.com>  Fri, 18 Mar 2011 10:35:44 +0100
+
+libifd-cyberjack6 (3.99.6beta-1) stable; urgency=low
+  * released 3.99.6beta
+  * compiles on OpenSuSE 11.4
+
+ -- Martin Preuss <martin@libchipcard.de>  Sat, 18 Mar 2011 23:58:00 +0200
+
+libifd-cyberjack6 (3.99.5beta-1) stable; urgency=low
+  * released 3.99.5beta
+  * merged with main driver sources at Reiner SCT
+
+ -- Martin Preuss <martin@libchipcard.de>  Mon, 14 Feb 2011 19:46:00 +0200
+
+libifd-cyberjack6 (3.99.4beta-1) stable; urgency=low
+  * released 3.99.4beta
+  * merged with main driver sources at Reiner SCT
+  * added support for new 0x501er readers
+
+ -- Martin Preuss <martin@libchipcard.de>  Thu, 10 Feb 2011 18:15:00 +0200
+
+libifd-cyberjack6 (3.99.3beta-1) stable; urgency=low
+  * released 3.99.3beta
+  * merged with main driver sources at Reiner SCT
+  * added support for 0x300er readers
+
+ -- Martin Preuss <martin@libchipcard.de>  Wed, 02 Feb 2011 22:16:00 +0200
+
+
+libifd-cyberjack6 (3.99.1beta-1) stable; urgency=low
+  * released 3.99.1beta
+  * reorganized driver to only support the IFD API
+  * merged with main driver sources at Reiner SCT
+  * removed support for old 0x100er readers
+  * temporarily removed support for 0x300er readers
+    (support for those readers in the new driver is not yet finished)
+
+ -- Martin Preuss <martin@libchipcard.de>  Sat, 04 Dec 2010 13:35:00 +0200
+

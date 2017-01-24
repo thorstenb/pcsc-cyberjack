@@ -1,0 +1,7 @@
+install-sh
+missing
+Makefile.in
+Makefile
+*.o
+*.lo
+*.la

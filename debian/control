@@ -1,0 +1,33 @@
+Source: pcsc-cyberjack
+Section: misc
+Priority: optional
+Maintainer: Frank Neuber <sct@kernelport.com>
+Uploaders: Reinhard Tartler <siretart@tauware.de>
+Build-Depends:
+ autotools-dev,
+ debhelper (>= 8),
+ dh-autoreconf,
+ libfox-1.6-dev,
+# libhal-dev,
+ libpcsclite-dev,
+ libusb-1.0-0-dev,
+ libxml2-dev
+Standards-Version: 3.9.2
+Homepage: http://www.reiner-sct.com/
+Vcs-Git: git://git.debian.org/git/collab-maint/pcsc-cyberjack.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/pcsc-cyberjack.git
+
+Package: libifd-cyberjack6
+Architecture: any
+Depends: pcscd, ${misc:Depends}, ${shlibs:Depends}
+Provides: pcsc-ifd-handler
+Suggests: pcsc-tools
+Recommends:
+Description: REINER SCT cyberJack USB chipcard reader user space driver
+ This package includes the IFD driver for the cyberJack contactless
+ (RFID) and contact USB chipcard reader.
+
+Package: fxcyberjack
+Architecture: any
+Description: we do not need this package in the future
+

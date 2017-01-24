@@ -1,0 +1,15 @@
+Package: libifd-cyberjack6
+Source: pcsc-cyberjack
+Version: 3.99.5final.sp10
+Architecture: amd64
+Maintainer: Frank Neuber <sct@kernelport.com>
+Installed-Size: 1098
+Depends: pcscd, libc6 (>= 2.14), libgcc1 (>= 1:3.0), libstdc++6 (>= 5.2), libusb-1.0-0 (>= 2:1.0.8)
+Suggests: pcsc-tools
+Provides: pcsc-ifd-handler
+Section: misc
+Priority: optional
+Homepage: http://www.reiner-sct.com/
+Description: REINER SCT cyberJack USB chipcard reader user space driver
+ This package includes the IFD driver for the cyberJack contactless
+ (RFID) and contact USB chipcard reader.

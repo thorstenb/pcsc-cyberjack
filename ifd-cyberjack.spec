@@ -1,0 +1,103 @@
+
+%define PACK_VER 1
+
+%define dist 
+%define disttag 
+%define distver     
+
+%define readers_dir %{_libdir}/readers
+
+Name:		pcsc-cyberjack
+Summary:	PC/SC driver for REINER SCT cyberjack USB chipcard reader
+Version:	3.99.5final.SP10
+Release:        %{PACK_VER}.%{disttag}%{distver}
+License: 	LGPL
+Packager:       Frank Neuber <sct@kernelport.com>
+URL:            http://www.reiner-sct.de/
+Group: 		System Environment/Libraries
+Source: 	pcsc-cyberjack_%{version}.tar.gz
+BuildRoot:      %{_tmppath}/%{name}-%{version}-root
+Requires:	udev, pcsc-lite
+# BuildRequires:
+Prereq:         /sbin/ldconfig
+
+
+%package gui
+Summary:	Graphical Diagnostic Tool
+Requires:	%{name} = %{version}
+Group:		System Environment/Libraries
+
+%description gui
+Graphical diagnostic tool for Reiner SCT cyberJack card readers.
+
+This package contains a graphical tool which lists all connected 
+Reiner SCT readers and allows flashing E-Com A and newer readers.
+
+It can also be used to diagnose most frequent problems in the reader-/driver
+setup.
+
+
+%description
+REINER SCT cyberJack USB chipcard reader user space driver
+
+This package includes the IFD driver for the cyberJack contactless (RFID) and contact
+USB chipcard reader.
+
+If you run into problems you should stop current running pcscd by typing 
+"sudo /etc/init.d/pcscd stop" or "sudo killall pcscd"
+and start the pcscd in debug mode by typing 
+"sudo /usr/sbin/pcscd -d -a -f"
+in a console and watch its output.
+
+For more information regarding installation under Linux see the README.txt
+in the documentation directory, esp. regarding compatibility with host
+controllers.
+
+For more information about the reader, software updates and a shop see
+http://www.reiner-sct.com/
+
+%prep
+%setup -q
+
+%build
+%configure --disable-static --sysconfdir="%{_sysconfdir}" --with-usbdropdir="%{_libdir}/readers" --enable-hal="no"
+make
+
+%install
+[ "$RPM_BUILD_ROOT" != "/" ] && rm -rf $RPM_BUILD_ROOT
+make DESTDIR=$RPM_BUILD_ROOT install
+rm $RPM_BUILD_ROOT/%{_libdir}/readers/libifd-cyberjack.bundle/Contents/Linux/libifd-cyberjack.la
+
+%clean
+[ "$RPM_BUILD_ROOT" != "/" ] && rm -rf $RPM_BUILD_ROOT
+
+%post
+/sbin/ldconfig
+#/sbin/insserv pcscd
+#/etc/init.d/pcscd restart
+/sbin/service pcscd restart
+
+%postun
+/sbin/ldconfig
+
+%files
+%defattr(0644,root,root)
+
+%doc COPYRIGHT.GPL COPYRIGHT.LGPL doc/README.txt doc/LIESMICH.txt
+
+# PC/SC
+#%attr(0755,root,root) %{_bindir}/cyberjack
+#%attr(0755,root,root) %{_libdir}/cyberjack/getdist.sh
+#%attr(0755,root,root) %{_libdir}/cyberjack/pcscd_init.diff
+
+%{_libdir}/readers/libifd-cyberjack.bundle/*
+
+%{_mandir}*
+/etc/cyberjack.conf.default 
+
+%changelog -n pcsc-cyberjack
+* Tue Jun 14 2011 09:53:20 +0200 - Frank Neuber <sct@kernelport.com>
++ pcsc-cyberjack-3.99.5final.SP02
+- released 3.99.5final.SP02
+- see changelog in debian/changelog in the source package
+

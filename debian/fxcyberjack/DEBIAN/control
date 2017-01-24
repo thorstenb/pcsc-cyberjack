@@ -1,0 +1,10 @@
+Package: fxcyberjack
+Source: pcsc-cyberjack
+Version: 3.99.5final.sp10
+Architecture: amd64
+Maintainer: Frank Neuber <sct@kernelport.com>
+Installed-Size: 12
+Section: misc
+Priority: optional
+Homepage: http://www.reiner-sct.com/
+Description: we do not need this package in the future

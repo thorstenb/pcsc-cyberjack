@@ -1,0 +1,22 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+%:
+	dh $@ --parallel --with autoreconf
+
+override_dh_clean:
+	dh_clean
+	rm -rf autom4te.cache/
+
+override_dh_auto_configure:
+	dh_auto_configure -- --sysconfdir=/etc/cyberjack
+
+override_dh_install:
+	mkdir -p debian/libifd-cyberjack6/etc/cyberjack
+	cp -v etc/cyberjack.conf.default \
+	   debian/libifd-cyberjack6/etc/cyberjack/cyberjack.conf
+	find debian/tmp -name '*.la' -exec sed -i "/dependency_libs/ s/'.*'/''/" {} +
+	dh_install
+
+override_dh_installchangelogs:
+	dh_installchangelogs ChangeLog

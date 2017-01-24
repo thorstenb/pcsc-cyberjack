@@ -1,0 +1,84 @@
+
+#MY_CFLAGS=-W -pedantic -std=c99 -ggdb -Wall -O -ggdb
+MY_CFLAGS=-ggdb -Wall
+
+
+default: all
+
+cvsclean::
+	rm -f `find . -name \*~`
+	rm -f `find . -name Makefile`
+	rm -f `find . -name Makefile.in`
+	rm -rf `find . -name .libs`
+	rm -Rf apidoc
+	rm -f INSTALL
+	rm -f aclocal.m4
+	rm -rf autom4te.cache/
+	rm -f config.guess
+	rm -f config.h.in
+	rm -f config.sub
+	rm -f configure
+	rm -f compile
+	rm -f debian/autoreconf.after
+	rm -f debian/autoreconf.before
+	rm -f depcomp
+	rm -f ltmain.sh
+	rm -f m4/libtool.m4
+	rm -f m4/ltoptions.m4
+	rm -f m4/ltversion.m4
+	rm -f m4/lt~obsolete.m4
+	rm -f debian/files
+	rm -f debian/libifd-cyberjack6.debhelper.log
+	rm -f debian/libifd-cyberjack6.postinst.debhelper
+	rm -f debian/libifd-cyberjack6.postrm.debhelper
+	rm -f debian/libifd-cyberjack6.preinst.debhelper
+	rm -f debian/libifd-cyberjack6.substvars
+	rm -rf debian/libifd-cyberjack6/
+	rm -rf debian/tmp/
+	rm -f config.h
+	rm -f config.log
+	rm -f config.status
+	rm -f debian/fxcyberjack.debhelper.log
+	rm -f debian/fxcyberjack.substvars
+	rm -rf debian/fxcyberjack/
+	rm -f ifd-cyberjack.spec
+	rm -f ifd/Info.plist
+	rm -f libcyberjack/libdialog/libtest
+	rm -f libcyberjack/libtest
+	rm -f libtool
+	rm -f stamp-h1
+
+macall:
+	glibtoolize -f --automake --copy
+	aclocal -I ./m4
+	autoheader
+	automake --add-missing --copy -i
+	autoconf
+
+all:
+	libtoolize -f --automake --copy
+	aclocal -I ./m4
+	autoheader
+	automake --add-missing --copy
+	autoconf
+
+mp:
+	libtoolize -f --automake --copy
+	aclocal -I ./m4
+	autoheader
+	automake --add-missing --foreign --copy
+	autoconf
+	CFLAGS="$(MY_CFLAGS)" CXXFLAGS="-ggdb -Wall" ./configure --disable-static
+
+clang:
+	libtoolize -f --automake --copy
+	aclocal -I ./m4
+	autoheader
+	automake --add-missing --foreign --copy
+	autoconf
+	CFLAGS="$(MY_CFLAGS)" CXXFLAGS="-ggdb -Wall" \
+	  CC=clang \
+	  CXX=clang \
+	  ./configure --disable-static
+
+
