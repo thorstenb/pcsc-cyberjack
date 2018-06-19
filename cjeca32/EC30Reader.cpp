@@ -160,22 +160,27 @@ uint32_t CEC30Reader::GetReadersInputBufferSize()
 
 CJ_RESULT CEC30Reader::CtApplicationData(uint32_t ApplicationID,uint16_t Function,uint8_t *InputData, uint32_t InputLen, uint32_t *Result, uint8_t *ResponseData, uint32_t *ResponseLen, uint8_t *ApplicationError,uint32_t *ApplicationErrorLength,uint8_t Slot)
 {
-   int Res;
+	int Res;
 	uint32_t Len;
-	uint16_t wLenRsp=0;
-	uint16_t wLenErr=0;
-	if(ResponseLen!=0)
-		wLenRsp=(uint16_t)*ResponseLen;
+	uint32_t wLenRsp=0;
+	uint32_t wLenErr=0;
+	if(ResponseLen!=NULL)
+		wLenRsp=*ResponseLen;
 	if(ApplicationErrorLength!=NULL)
-		wLenErr=(uint16_t)*ApplicationErrorLength;
-	if(m_nApplicationResponseLength<(uint32_t)wLenRsp+wLenErr+4)
+		wLenErr=*ApplicationErrorLength;
+	
+	Len=wLenRsp+wLenErr;
+	if (Len<wLenRsp || Len>0xFFFFFFFB) // overflow or bigger than 0xFFFFFFFF - 4
+		return CJ_ERR_WRONG_PARAMETER;
+
+	Len+=4;
+	if(m_nApplicationResponseLength<Len)
 	{
 		if(m_pApplicationResponse!=NULL)
 			delete m_pApplicationResponse;
-		m_nApplicationResponseLength=wLenRsp+wLenErr+4+1024;
-      m_pApplicationResponse=new uint8_t[m_nApplicationResponseLength];
+		m_nApplicationResponseLength=Len;
+		m_pApplicationResponse=new uint8_t[m_nApplicationResponseLength];
 	}
-	Len=4+wLenRsp+wLenErr;
 
 
 	if((Res=Escape(ApplicationID,Function,InputData,InputLen,Result,m_pApplicationResponse,&Len,Slot)))
@@ -184,12 +189,16 @@ CJ_RESULT CEC30Reader::CtApplicationData(uint32_t ApplicationID,uint16_t Functio
 			*ResponseLen=0;
 		if(ApplicationErrorLength)
 			*ApplicationErrorLength=0;
-      return Res;
+		return Res;
 	}
-	memcpy(&wLenRsp,m_pApplicationResponse,sizeof(wLenRsp));
-	wLenRsp=ReaderToHostShort(wLenRsp);
-	memcpy(&wLenErr,m_pApplicationResponse+2,sizeof(wLenErr));
-	wLenErr=ReaderToHostShort(wLenErr);
+
+	uint16_t wLenRsp16 = 0;
+	uint16_t wLenErr16 = 0;
+
+	memcpy(&wLenRsp16,m_pApplicationResponse,2);
+	wLenRsp=ReaderToHostShort(wLenRsp16);
+	memcpy(&wLenErr16,m_pApplicationResponse+2,2);
+	wLenErr=ReaderToHostShort(wLenErr16);
 	if(ApplicationErrorLength)
 	{
 		if(wLenErr>*ApplicationErrorLength)
@@ -203,7 +212,7 @@ CJ_RESULT CEC30Reader::CtApplicationData(uint32_t ApplicationID,uint16_t Functio
 			memcpy(ApplicationError,m_pApplicationResponse+4+wLenRsp,wLenErr);
 	}
 
-   if(ResponseLen)
+	if(ResponseLen)
 	{
 		if(wLenRsp>*ResponseLen)
 		{
