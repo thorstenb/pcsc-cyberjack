@@ -7,8 +7,6 @@ Build-Depends:
  autotools-dev,
  debhelper (>= 8),
  dh-autoreconf,
- libfox-1.6-dev,
-# libhal-dev,
  libpcsclite-dev,
  libusb-1.0-0-dev,
  libxml2-dev
@@ -26,8 +24,4 @@ Recommends:
 Description: REINER SCT cyberJack USB chipcard reader user space driver
  This package includes the IFD driver for the cyberJack contactless
  (RFID) and contact USB chipcard reader.
-
-Package: fxcyberjack
-Architecture: any
-Description: we do not need this package in the future
 

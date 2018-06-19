@@ -1,4 +1,4 @@
-# Version: 3.99.5final.SP10
+# Version: 3.99.5final.SP11
 # This file modifies the behaviour of the Cyberjack driver.
 # Please copy this file to the same folder but under the name "cyberjack.conf"
 # (i.e. without the trailing ".default").

@@ -15,6 +15,7 @@ override_dh_install:
 	mkdir -p debian/libifd-cyberjack6/etc/cyberjack
 	cp -v etc/cyberjack.conf.default \
 	   debian/libifd-cyberjack6/etc/cyberjack/cyberjack.conf
+	cp -a debian/libifd-cyberjack6 debian/tmp
 	find debian/tmp -name '*.la' -exec sed -i "/dependency_libs/ s/'.*'/''/" {} +
 	dh_install
 

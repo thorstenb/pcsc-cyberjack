@@ -101,10 +101,13 @@ static bool _isDeviceSupported(uint16_t vendorId, uint16_t productId) {
      productId==0x500 ||
      productId==0x501 ||
      productId==0x502 ||
+     productId==0x503 ||
      productId==0x504 ||
+     productId==0x580 ||
      productId==0x505 ||
      productId==0x506 ||
      productId==0x507 ||
+     productId==0x527 ||
      productId==0x525);
 }
 
@@ -438,8 +441,12 @@ RESPONSECODE IFDHandler::createChannelByName(DWORD Lun, char *devName) {
     wantedPid=0x501;
   else if (strcasecmp(devName, "REINER SCT cyberJack compact")==0)
     wantedPid=0x502;
+  else if (strcasecmp(devName, "REINER SCT cyberJack RFID universal")==0)
+    wantedPid=0x503;
   else if (strcasecmp(devName, "REINER SCT cyberJack go / go plus")==0)
     wantedPid=0x504;
+  else if (strcasecmp(devName, "REINER SCT cyberJack one")==0)
+    wantedPid=0x580;
   else if (strcasecmp(devName, "REINER SCT cyberJack wave")==0)
     wantedPid=0x505;
   else if (strcasecmp(devName, "REINER SCT cyberJack RFID cv")==0)
@@ -448,6 +455,8 @@ RESPONSECODE IFDHandler::createChannelByName(DWORD Lun, char *devName) {
     wantedPid=0x507;
   else if (strcasecmp(devName, "REINER SCT cyberJack wave BDr")==0)
     wantedPid=0x525;
+  else if (strcasecmp(devName, "REINER SCT cyberJack SISReader")==0)
+    wantedPid=0x527;
 
   /* look for context */
   MUTEX_LOCK(m_contextMutex);

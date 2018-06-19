@@ -47,6 +47,7 @@ noinst_HEADERS=\
   BDRReader.h \
   SHUReader.h \
   SISReader.h \
+  RFUReader.h \
   USBUnix.h \
   ccid.h \
   config_l.h config_p.h \
@@ -88,6 +89,7 @@ libeca_la_SOURCES=\
   BDRReader.cpp \
   SHUReader.cpp \
   SISReader.cpp \
+  RFUReader.cpp \
   cjeca32.cpp \
   Platform_unix.cpp \
   config.cpp

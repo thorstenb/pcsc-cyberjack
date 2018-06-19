@@ -287,17 +287,6 @@ int CUSBUnix::Open() {
     m_bulkIn=0x85;
     m_intPipe=0x81;
     break;
-#if 0
-  case 0x400:
-    Debug.Out("<USB>",
-	      DEBUG_MASK_COMMUNICATION_ERROR,
-	      "Using USB implementation 3", 0, 0);
-    usbMode=3;
-
-    m_bulkOut=0x02;
-    m_bulkIn=0x81;
-    m_intPipe=0x83;
-    break;
 
   case 0x401:
     Debug.Out("<USB>",
@@ -309,7 +298,7 @@ int CUSBUnix::Open() {
     m_bulkIn=0x82;
     m_intPipe=0x81;
     break;
-#endif
+
   default:
     Debug.Out("<USB>",
 	      DEBUG_MASK_COMMUNICATION_ERROR,

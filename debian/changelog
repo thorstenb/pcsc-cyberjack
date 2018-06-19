@@ -1,3 +1,8 @@
+pcsc-cyberjack (3.99.5final.sp11) unstable; urgency=low
+  * Add support for cyberJack one
+
+ -- Frank Neuber <sct@kernelport.com>  Mon, 17 Jul 2017 09:21:04 +0200
+
 pcsc-cyberjack (3.99.5final.sp10) unstable; urgency=low
   * Add support for SHUReader and SISReader
   * Update to the Reiner-SCT repository rev cyberJack@1305

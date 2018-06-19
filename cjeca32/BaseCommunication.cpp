@@ -24,6 +24,7 @@
 #include "BDRReader.h"
 #include "SHUReader.h"
 #include "SISReader.h"
+#include "RFUReader.h"
 
 
 
@@ -234,6 +235,23 @@ CBaseReader *CBaseCommunication::_buildUsbReaderObject(uint16_t pid, const char 
     free(ptr);
     return m_Reader;
 
+  case 0x0503:
+    if (len>=24 && memcmp(ptr, "cyberJack RFID universal", 24)==0) {
+      ptr[24]='\0';
+      m_Reader = new CRFUReader(m_Owner, this);
+      Debug.varLog(m_cDeviceName, DEBUG_MASK_COMMUNICATION_INFO,
+             "Recognized device %04x [%s]", pid, ptr);
+    }
+    else {
+      Debug.varLog(m_cDeviceName, DEBUG_MASK_COMMUNICATION_ERROR,
+             "Device [%s] ist not a known cyberJack 0x503, assuming cyberJack RFID universal", ptr);
+      m_Reader = new CRFUReader(m_Owner, this);
+    }
+    m_pid=pid;
+    m_productString=ptr;
+    free(ptr);
+    return m_Reader;
+
   case 0x0504:
     if (len>=12 && memcmp(ptr, "cyberJack go / go plus", 22)==0) {
       ptr[22]='\0';
@@ -244,6 +262,23 @@ CBaseReader *CBaseCommunication::_buildUsbReaderObject(uint16_t pid, const char 
     else {
       Debug.varLog(m_cDeviceName, DEBUG_MASK_COMMUNICATION_ERROR,
              "Device [%s] ist not a known cyberJack 0x504, assuming cyberjack go / go plus", ptr);
+      m_Reader = new CCGOReader(m_Owner, this);
+    }
+    m_pid=pid;
+    m_productString=ptr;
+    free(ptr);
+    return m_Reader;
+
+  case 0x0580:
+    if (len>=12 && memcmp(ptr, "cyberJack one", 13)==0) {
+      ptr[13]='\0';
+      m_Reader = new CCGOReader(m_Owner, this);
+      Debug.varLog(m_cDeviceName, DEBUG_MASK_COMMUNICATION_INFO,
+             "Recognized device %04x [%s]", pid, ptr);
+    }
+    else {
+      Debug.varLog(m_cDeviceName, DEBUG_MASK_COMMUNICATION_ERROR,
+             "Device [%s] ist not a known cyberJack 0x580, assuming cyberjack one", ptr);
       m_Reader = new CCGOReader(m_Owner, this);
     }
     m_pid=pid;
