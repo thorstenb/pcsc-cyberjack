@@ -91,8 +91,8 @@ CBaseReader *CBaseCommunication::_buildUsbReaderObject(uint16_t pid, const char 
   switch(pid) {
 #ifndef _WINDOWS
   case 0x300:
-    if (len>=18 && memcmp(ptr, "cyberJack pinpad(a)", 19)==0) {
-      ptr[18]='\0';
+    if (len>=19 && memcmp(ptr, "cyberJack pinpad(a)", 19)==0) {
+      ptr[19]='\0';
       m_Reader = new CPPAReader(m_Owner, this);
       Debug.varLog(m_cDeviceName, DEBUG_MASK_COMMUNICATION_INFO,
                    "Recognized device %04x [%s]", pid, ptr);
@@ -253,7 +253,7 @@ CBaseReader *CBaseCommunication::_buildUsbReaderObject(uint16_t pid, const char 
     return m_Reader;
 
   case 0x0504:
-    if (len>=12 && memcmp(ptr, "cyberJack go / go plus", 22)==0) {
+    if (len>=22 && memcmp(ptr, "cyberJack go / go plus", 22)==0) {
       ptr[22]='\0';
       m_Reader = new CCGOReader(m_Owner, this);
       Debug.varLog(m_cDeviceName, DEBUG_MASK_COMMUNICATION_INFO,
@@ -270,7 +270,7 @@ CBaseReader *CBaseCommunication::_buildUsbReaderObject(uint16_t pid, const char 
     return m_Reader;
 
   case 0x0580:
-    if (len>=12 && memcmp(ptr, "cyberJack one", 13)==0) {
+    if (len>=13 && memcmp(ptr, "cyberJack one", 13)==0) {
       ptr[13]='\0';
       m_Reader = new CCGOReader(m_Owner, this);
       Debug.varLog(m_cDeviceName, DEBUG_MASK_COMMUNICATION_INFO,
@@ -279,6 +279,23 @@ CBaseReader *CBaseCommunication::_buildUsbReaderObject(uint16_t pid, const char 
     else {
       Debug.varLog(m_cDeviceName, DEBUG_MASK_COMMUNICATION_ERROR,
              "Device [%s] ist not a known cyberJack 0x580, assuming cyberjack one", ptr);
+      m_Reader = new CCGOReader(m_Owner, this);
+    }
+    m_pid=pid;
+    m_productString=ptr;
+    free(ptr);
+    return m_Reader;
+
+  case 0x2000:
+    if (len>=16 && memcmp(ptr, "cyberJack one MF", 16)==0) {
+      ptr[16]='\0';
+      m_Reader = new CCGOReader(m_Owner, this);
+      Debug.varLog(m_cDeviceName, DEBUG_MASK_COMMUNICATION_INFO,
+             "Recognized device %04x [%s]", pid, ptr);
+    }
+    else {
+      Debug.varLog(m_cDeviceName, DEBUG_MASK_COMMUNICATION_ERROR,
+             "Device [%s] ist not a known cyberJack 0x2000, assuming cyberjack one MF", ptr);
       m_Reader = new CCGOReader(m_Owner, this);
     }
     m_pid=pid;

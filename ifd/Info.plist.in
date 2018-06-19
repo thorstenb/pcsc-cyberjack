@@ -47,6 +47,7 @@
 		<string>0x0c4b</string>
 		<string>0x0c4b</string>
 		<string>0x0c4b</string>
+		<string>0x0c4b</string>
 	</array>
 
 	<key>ifdProductID</key>
@@ -67,6 +68,7 @@
 		<string>0x0525</string>
 		<string>0x0527</string>
 		<string>0x0580</string>
+		<string>0x2000</string>
 	</array>
 
 	<key>ifdFriendlyName</key>
@@ -87,6 +89,7 @@
 		<string>REINER SCT cyberJack wave BDr</string>
 		<string>REINER SCT cyberJack SISReader</string>
 		<string>REINER SCT cyberJack one</string>
+		<string>REINER SCT cyberJack one MF</string>
 	</array>
 </dict>
 </plist>

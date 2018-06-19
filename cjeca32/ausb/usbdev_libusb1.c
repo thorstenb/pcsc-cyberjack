@@ -44,9 +44,9 @@ int rsct_usbdev_scan_simple(rsct_usbdev_t **usbdev_list) {
 	  char pbuff[256];
 	  struct stat st;
 	  int havePath=0;
-		if (descr.idProduct>=0x700) {
-			continue;
-		}
+	  if (descr.idProduct==0x700 || descr.idProduct==0x701) {
+		continue;
+	  }
 	  d=rsct_usbdev_new();
 	  d->busId=libusb_get_bus_number(dev);
 	  d->busPos=libusb_get_device_address(dev);
@@ -125,10 +125,9 @@ int rsct_usbdev_scan(rsct_usbdev_t **usbdev_list) {
 	  char pbuff[256];
 	  struct stat st;
 	  int havePath=0;
-	  if (descr.idProduct>=0x700) {
+	  if (descr.idProduct==0x700 || descr.idProduct==0x701) {
 		continue;
 	  }
-  
 	  d=rsct_usbdev_new();
 	  d->busId=libusb_get_bus_number(dev);
 	  d->busPos=libusb_get_device_address(dev);

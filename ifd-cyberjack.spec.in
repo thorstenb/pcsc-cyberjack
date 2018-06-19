@@ -92,7 +92,6 @@ rm $RPM_BUILD_ROOT/@RPM_PCSC_DROPDIR@/libifd-cyberjack.bundle/Contents/Linux/lib
 
 @RPM_PCSC_DROPDIR@/libifd-cyberjack.bundle/*
 
-%{_mandir}*
 /etc/cyberjack.conf.default 
 
 %changelog -n pcsc-cyberjack

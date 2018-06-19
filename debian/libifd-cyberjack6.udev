@@ -19,6 +19,7 @@ ATTR{idVendor}=="0c4b", ATTR{idProduct}=="0506", MODE="660", GROUP="pcscd"
 ATTR{idVendor}=="0c4b", ATTR{idProduct}=="0507", MODE="660", GROUP="pcscd"
 ATTR{idVendor}=="0c4b", ATTR{idProduct}=="0525", MODE="660", GROUP="pcscd"
 ATTR{idVendor}=="0c4b", ATTR{idProduct}=="0580", MODE="660", GROUP="pcscd"
+ATTR{idVendor}=="0c4b", ATTR{idProduct}=="2000", MODE="660", GROUP="pcscd"
 
 # All done
 LABEL="cyberjack_rules_end"

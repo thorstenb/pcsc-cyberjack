@@ -104,6 +104,7 @@ static bool _isDeviceSupported(uint16_t vendorId, uint16_t productId) {
      productId==0x503 ||
      productId==0x504 ||
      productId==0x580 ||
+     productId==0x2000 ||
      productId==0x505 ||
      productId==0x506 ||
      productId==0x507 ||
@@ -447,6 +448,8 @@ RESPONSECODE IFDHandler::createChannelByName(DWORD Lun, char *devName) {
     wantedPid=0x504;
   else if (strcasecmp(devName, "REINER SCT cyberJack one")==0)
     wantedPid=0x580;
+  else if (strcasecmp(devName, "REINER SCT cyberJack one MF")==0)
+    wantedPid=0x2000;
   else if (strcasecmp(devName, "REINER SCT cyberJack wave")==0)
     wantedPid=0x505;
   else if (strcasecmp(devName, "REINER SCT cyberJack RFID cv")==0)

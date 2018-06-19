@@ -6,10 +6,6 @@ DOCFILES=\
 #docfiledir=$(datarootdir)/doc/$(PACKAGE)
 #docfile_DATA=$(DOCFILES)
 
-manpagedir=$(mandir)
-manpage_DATA= \
-  cyberjack.8
-
 EXTRA_DIST=\
   README.xml LIESMICH.xml \
   verifypin_ascii.c verifypin_fpin2.c \
